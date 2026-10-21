@@ -79,10 +79,10 @@ class MoroccanANPREngine:
             return
 
         logging.info("Loading Stage 1 (plate) and Stage 2 (character) YOLO networks...")
-        self.plate_net = cv2.dnn.readNetFromDarknet(str(plate_cfg), str(plate_weights))
+        self.plate_net = cv2.dnn.readNet(model=str(plate_weights), config=str(plate_cfg))
         self.plate_layers = _get_output_layers(self.plate_net)
 
-        self.char_net = cv2.dnn.readNetFromDarknet(str(char_cfg), str(char_weights))
+        self.char_net = cv2.dnn.readNet(model=str(char_weights), config=str(char_cfg))
         self.char_layers = _get_output_layers(self.char_net)
 
         self.available = True
